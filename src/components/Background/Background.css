@@ -1,0 +1,12 @@
+/* This file styles the Background component. */
+
+.Background {
+    position: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    transition: opacity ease-in 1s;
+}

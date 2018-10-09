@@ -1,0 +1,14 @@
+{
+  "name": "Christ-Centered",
+  "version": "1.0",
+  "description": "TO DO.",
+  "permissions": [
+    "storage", 
+    "https://www.bible.com/",
+    "https://fonts.googleapis.com/"
+  ],
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  },
+  "manifest_version": 2
+}

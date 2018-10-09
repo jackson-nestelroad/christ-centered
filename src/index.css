@@ -1,0 +1,10 @@
+/* This file styles all of the components in the HTML body. */
+ 
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: 'Open Sans';
+    font-weight: 300;
+    text-align: center;
+}
