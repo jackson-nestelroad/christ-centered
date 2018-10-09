@@ -2,7 +2,6 @@
   "name": "christ-centered",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://bible.com",
   "dependencies": {
     "axios": "^0.18.0",
     "https-browserify": "^1.0.0",
@@ -16,9 +15,5 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  },
-  "devDependencies": {
-    "gulp": "^3.9.1",
-    "gulp-sass": "^4.0.1"
   }
 }
