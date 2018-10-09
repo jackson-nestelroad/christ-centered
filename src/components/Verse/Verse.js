@@ -138,6 +138,7 @@ export class Verse extends Component {
         }
         // The verse has loaded
         else{
+            document.title = this.state.reference;
             return (
                 <div className="Bible">
                     <div className="Verse" style={this.getFontSize()}>{this.state.verse}</div>

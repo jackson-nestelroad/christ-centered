@@ -22,7 +22,7 @@ export class Background extends Component {
     // Function to get background link
     getBackground = async () => {
         try{
-            const link = require(`../../assets/backgrounds/${this.props.image}-min.jpg`);
+            const link = require(`../../assets/backgrounds/${this.props.image}.jpeg`);
             return await link;
         } catch(err){
             throw new Error("Error loading background.");

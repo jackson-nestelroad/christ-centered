@@ -2,12 +2,13 @@
 
  // Get imports
 import React, { Component } from 'react';                                               // React Library
-import data from '../assets/backgrounds/data.json';                                     // Background image data
+import data from '../assets/backgrounds/_data.json';                                    // Background image data
 
 import { Background } from '../components/Background/Background';                       // Background component
 import { Time } from '../components/Time/Time';                                         // Time component
 import { Day } from '../components/Day/Day';                                            // Day component
 import { Verse } from '../components/Verse/Verse';                                      // Verse component
+import { Source } from '../components/Source/Source';                                   // Source component
 
 // Create App component
 export default class App extends Component {
@@ -15,16 +16,17 @@ export default class App extends Component {
     // Get random background image
     // We use this to draw the image and cite it in the Source component
     componentWillMount = () => {
-        this.setState({ image: data[Math.floor(Math.random() * data.length)].id})
+        this.setState({ image: data[Math.floor(Math.random() * data.length)]});
     }
 
     // Render function, the whole app
     render = () => {
         return (
-            <Background image={this.state.image}>
+            <Background image={this.state.image.id}>
                 <Time />
                 <Day />
                 <Verse />
+                <Source photographer={this.state.image.photographer} source={this.state.image.source} />
             </Background>
         )
     }

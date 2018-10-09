@@ -1,7 +1,10 @@
 {
   "name": "Christ-Centered",
   "version": "1.0",
-  "description": "TO DO.",
+  "description": "Replace new tab page with the Bible Verse of the Day.",
+  "icons": { 
+    "128": "icon128.png" 
+  },
   "permissions": [
     "storage", 
     "https://www.bible.com/",
