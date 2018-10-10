@@ -10,13 +10,6 @@ export class Source extends Component {
     // Construct our properties and state
     constructor(props){
         super(props);
-        this.state = {
-            loaded: false,
-            error: false,
-            style: {
-                opacity: 0.5
-            }
-        }
     }
 
     // Render the Source component
