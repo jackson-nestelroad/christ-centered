@@ -11,16 +11,16 @@ import https from 'https';                                                      
 // Create Verse component
 export class Verse extends Component {
 
-        // Construct our properties and state
-        constructor(props){
-            super(props);
-            this.state = {
-                loaded: false,
-                verse: '',
-                reference: '',
-                url: ''
-            }
+    // Construct our properties and state
+    constructor(props){
+        super(props);
+        this.state = {
+            loaded: false,
+            verse: '',
+            reference: '',
+            url: ''
         }
+    }
 
     // Function to get the vere of the day from storage or bible.com
     getVerse = () => {

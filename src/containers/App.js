@@ -9,6 +9,7 @@ import { Time } from '../components/Time/Time';                                 
 import { Day } from '../components/Day/Day';                                            // Day component
 import { Verse } from '../components/Verse/Verse';                                      // Verse component
 import { Source } from '../components/Source/Source';                                   // Source component
+import { Weather } from '../components/Weather/Weather';                                // Weather component
 
 // Create App component
 export default class App extends Component {
@@ -23,6 +24,7 @@ export default class App extends Component {
     render = () => {
         return (
             <Background image={this.state.image.id}>
+                <Weather />
                 <Time />
                 <Day />
                 <Verse />

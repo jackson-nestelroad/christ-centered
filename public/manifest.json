@@ -6,10 +6,16 @@
     "128": "icon128.png" 
   },
   "permissions": [
-    "storage", 
+    "storage",
+    "geolocation",
     "https://www.bible.com/",
-    "https://fonts.googleapis.com/"
+    "https://fonts.googleapis.com/",
+    "https://api.openweathermap.org/"
   ],
+  "background": {
+    "persistent": false,
+    "scripts": ["getLocation.js"]
+  },
   "chrome_url_overrides": {
     "newtab": "index.html"
   },
