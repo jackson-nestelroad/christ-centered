@@ -1,4 +1,4 @@
-// This script get's the user's coordinates
+// This script gets the user's coordinates.
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     if(request.command == 'getLocation'){
