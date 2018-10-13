@@ -1,0 +1,43 @@
+/* This file styles the Weather component. */
+
+.Weather {
+    color: #FFFFFF;
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    user-select: none;
+    transition: opacity 0.25s;
+}
+
+.Weather .Location {
+    font-size: 8pt;
+    text-shadow: 0px 1px 1px rgba(0,0,0,0.5);
+}
+
+.Weather .Temperature {
+    font-size: 18pt;
+    text-shadow: 0px 1.5px 1px rgba(0,0,0,0.5);
+}
+
+.Weather .Temperature .unit {
+    font-size: 8pt;
+}
+
+.Weather .Icon {
+    font-size: 48pt;
+    text-shadow: 0px 2px 1px rgba(0,0,0,0.5);
+    animation: fadein 0.25s;
+}
+
+.unloaded {
+    opacity: 0.5;
+}
+
+.loaded {
+    opacity: 0.8;
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}

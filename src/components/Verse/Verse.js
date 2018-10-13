@@ -25,17 +25,16 @@ export class Verse extends Component {
     // Function to get the vere of the day from storage or bible.com
     getVerse = () => {
         // Get all of our verse data from Chrome storage API
-        chrome.storage.sync.get(['lastChecked', 'verse', 'reference', 'url'], data => {
+        chrome.storage.sync.get(['lastCheckedVerse', 'verse', 'reference', 'url'], data => {
             const date = new Date();
             const startOfDay = new Date(`${date.getMonth()+1}/${date.getDate()}/${date.getFullYear()}`).getTime();
 
             // If it is the same day, we don't need to retrieve the Verse of the Day again
-            if(data.lastChecked == startOfDay){
+            if(data.lastCheckedVerse == startOfDay){
                 this.setState({ verse: data.verse, reference: data.reference, url: data.url, loaded: true });
             }
             // If it is a different day, we need to update the Verse of the Day
-            else
-            {
+            else{
                 // Options for our GET request
                 const options = {
                     hostname: 'www.bible.com',
@@ -68,7 +67,7 @@ export class Verse extends Component {
                         reference = reference.substring(0, reference.indexOf('(') - 1);
                     
                         // Store all of these items in Chrome storage (it is faster to retrieve them this way)
-                        chrome.storage.sync.set({ verse: verse, reference: reference, url: url, lastChecked: startOfDay});
+                        chrome.storage.sync.set({ verse: verse, reference: reference, url: url, lastCheckedVerse: startOfDay});
 
                         // Set our state
                         this.setState({ verse: verse, reference: reference, url: url, loaded: true });

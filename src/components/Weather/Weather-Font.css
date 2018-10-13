@@ -1,0 +1,120 @@
+/* This file creates the font for the weather icons. */
+/* Icons from https://github.com/erikflowers/weather-icons. */
+/* Font genereated with icomoon. */
+
+@font-face {
+  font-family: 'weather-icons';
+  src: url('../../assets/fonts/weather-icons.eot');
+  src: url('../../assets/fonts/weather-icons.eot') format('embedded-opentype'),
+  url('../../assets/fonts/weather-icons.ttf') format('truetype'),
+  url('../../assets/fonts/weather-icons.woff') format('woff'),
+  url('../../assets/fonts/weather-icons.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="weather-icon-"], [class*=" weather-icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'weather-icons' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.weather-icon-wi-day-clear:before {
+  content: "\e900";
+}
+.weather-icon-wi-day-cloudy:before {
+  content: "\e901";
+}
+.weather-icon-wi-day-fog:before {
+  content: "\e902";
+}
+.weather-icon-wi-day-haze:before {
+  content: "\e903";
+}
+.weather-icon-wi-day-lightning:before {
+  content: "\e904";
+}
+.weather-icon-wi-day-partly-cloudy:before {
+  content: "\e905";
+}
+.weather-icon-wi-day-rain:before {
+  content: "\e906";
+}
+.weather-icon-wi-day-rain-mix:before {
+  content: "\e907";
+}
+.weather-icon-wi-day-sleet:before {
+  content: "\e908";
+}
+.weather-icon-wi-day-snow:before {
+  content: "\e909";
+}
+.weather-icon-wi-day-storm-showers:before {
+  content: "\e90a";
+}
+.weather-icon-wi-day-thunderstorm:before {
+  content: "\e90b";
+}
+.weather-icon-wi-dust:before {
+  content: "\e90c";
+}
+.weather-icon-wi-fog:before {
+  content: "\e90d";
+}
+.weather-icon-wi-night-alt-clear:before {
+  content: "\e90e";
+}
+.weather-icon-wi-night-alt-cloudy:before {
+  content: "\e90f";
+}
+.weather-icon-wi-night-alt-fog:before {
+  content: "\e910";
+}
+.weather-icon-wi-night-alt-lightning:before {
+  content: "\e911";
+}
+.weather-icon-wi-night-alt-partly-cloudy:before {
+  content: "\e912";
+}
+.weather-icon-wi-night-alt-rain:before {
+  content: "\e913";
+}
+.weather-icon-wi-night-alt-rain-mix:before {
+  content: "\e914";
+}
+.weather-icon-wi-night-alt-sleet:before {
+  content: "\e915";
+}
+.weather-icon-wi-night-alt-snow:before {
+  content: "\e916";
+}
+.weather-icon-wi-night-alt-storm-showers:before {
+  content: "\e917";
+}
+.weather-icon-wi-night-alt-thunderstorm:before {
+  content: "\e918";
+}
+.weather-icon-wi-rain-wind:before {
+  content: "\e919";
+}
+.weather-icon-wi-sandstorm:before {
+  content: "\e91a";
+}
+.weather-icon-wi-smoke:before {
+  content: "\e91b";
+}
+.weather-icon-wi-tornado:before {
+  content: "\e91c";
+}
+.weather-icon-wi-volcano:before {
+  content: "\e91d";
+}
