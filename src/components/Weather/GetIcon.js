@@ -1,5 +1,9 @@
+// This program converts Open Weather API's weather code to an icon-equivalent
+
+// Define our exports object
 let exports = module.exports = {};
 
+// Weather code to icon conversion 
 const icons = {
     200: "storm-showers",
     201: "thunderstorm",
@@ -57,6 +61,7 @@ const icons = {
     804: "cloudy"
 }
 
+// Weather codes that do not depend on the time of day
 const neutral = [
     711,
     721,
@@ -67,22 +72,34 @@ const neutral = [
     781
 ]
 
+// Function to convert a weather code into its icon-equivalent
 exports.getIcon = id => {
     const date = new Date();
     const time = date.getHours();
     let timeOfDay = 'day';
+    // 8:00 PM to 6:00 AM is our night time
     if(time >= 20 || time < 6){
         timeOfDay = 'night-alt';
     }
+
+    // Get the icon-equivalent
     let icon = icons[id];
     let string = 'weather-icon-wi-';
+
+    // If we did not find any icon-equivalent
     if(!icon)
         return false;
+
+    // If this code is neutral
     if(neutral.includes(id)){
         string += icons[id];
     }
+
+    // If this code depends on the time of day
     else{
         string += `${timeOfDay}-${icons[id]}`;
     }
+
+    // Return the string for the weather icon
     return string;
 }
