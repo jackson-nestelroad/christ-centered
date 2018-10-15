@@ -137,6 +137,7 @@ export class Weather extends Component {
         this.setWeather();
     }
 
+    // Render the Weather component
     render = () => {
         // If the weather hasn't loaded yet
         if(!this.state.loaded){

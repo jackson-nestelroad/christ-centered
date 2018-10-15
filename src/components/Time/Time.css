@@ -1,12 +1,31 @@
 /* This file styles the Time component. */
 
+@media only screen and (min-width: 800px) {
+    .Time {
+        color: #FFFFFF;
+        white-space: nowrap;
+        font-size: 112pt;
+        text-shadow: 0px 5px 1px rgba(0,0,0,0.5);
+        margin: 48px 0 0 0;
+        user-select: none;
+        animation: fadein 0.25s;
+    }   
+}
+
+@media only screen and (max-width: 800px) {
+    .Time {
+        color: #FFFFFF;
+        white-space: nowrap;
+        font-size: 56pt;
+        text-shadow: 0px 2.5px 1px rgba(0,0,0,0.5);
+        margin: 48px 0 0 0;
+        user-select: none;
+        animation: fadein 0.25s;
+    }
+}
+
 .Time {
-    color: #FFFFFF;
-    font-size: 112pt;
-    text-shadow: 0px 5px 1px rgba(0,0,0,0.5);
-    margin: 48px 0 0 0;
-    user-select: none;
-    animation: fadein 0.25s;
+    transition: font-size 1s, text-shadow 1s;
 }
 
 @keyframes fadein {

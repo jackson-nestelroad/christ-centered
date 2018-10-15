@@ -16,6 +16,7 @@ export class Verse extends Component {
         super(props);
         this.state = {
             loaded: false,
+            transition: false,
             verse: '',
             reference: '',
             url: ''
@@ -101,8 +102,18 @@ export class Verse extends Component {
         }
         let styleValue = size.toString() + 'pt';
 
+        if(!this.state.transition){
+            setTimeout(() => {
+                this.setState({ transition: true });
+              }, 500);
+        }
+
         // Return the style object for rendering
-        return { fontSize: styleValue, lineHeight: styleValue, textShadow: `0px ${Math.round(shadow)}px 1px rgba(0,0,0,0.5)`};
+        return { 
+            fontSize: styleValue, 
+            lineHeight: styleValue, 
+            textShadow: `0px ${Math.round(shadow)}px 1px rgba(0,0,0,0.5)`
+        };
 
         // Essentially the same algorithm, kept for reference
         // if(length > 195)
@@ -122,16 +133,18 @@ export class Verse extends Component {
         this.getVerse();
     }
 
+    textLoaded = () => {
+        this.setState({ transition: true });
+    }
+
     // Render the Verse component
     render = () => {
         // If the verse hasn't loaded yet
         if(!this.state.loaded){
             return (
                 <div className="Bible unloaded">
-                    <div className="Verse">{this.state.verse}</div>
-                    <div className="Reference">
-                        {this.state.reference}
-                    </div>
+                    <div className="Verse"></div>
+                    <div className="Reference"></div>
                 </div>
             )
         }
@@ -140,7 +153,7 @@ export class Verse extends Component {
             document.title = this.state.reference;
             return (
                 <div className="Bible">
-                    <div className="Verse" style={this.getFontSize()}>{this.state.verse}</div>
+                    <div className={"Verse " + (this.state.transition ? "transition" : "no-transition")} style={this.getFontSize()}>{this.state.verse}</div>
                     <div className="Reference">
                         <a href={this.state.url}>
                             {this.state.reference}

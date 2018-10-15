@@ -21,6 +21,7 @@
 
 .Weather .Temperature .unit {
     font-size: 8pt;
+    font-weight: 600;
 }
 
 .Weather .Icon {
