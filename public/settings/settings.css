@@ -7,13 +7,14 @@ body {
     text-align: center;
     overflow: hidden;
     margin: 0;
+    user-select: none;
 }
 
 .Settings {
     width: 100%;
     height: 100%;
     padding: 8px 0;
-    background-color: rgb(245, 245, 245)
+    background-color: #F5F5F5;
 }
 
 .Title {
@@ -25,12 +26,98 @@ body {
     font-weight: 600;
 }
 
+.Setting {
+    margin: 16px 0 8px 0;
+}
+
+.Setting .Switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 18px;
+    z-index: 1;
+}
+
+.Setting .Switch input {
+    display: none;
+}
+
+.Setting .Switch .Slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #FFA987;
+    border-radius: 25px;
+    transition: 0.5s;
+}
+
+/* .Setting .Switch .Slider::before {
+    position: absolute;
+    content: "";
+    height: 22px;
+    width: 22px;
+    left: -2px;
+    bottom: -2px;
+    background-color: white;
+    border-radius: 50%;
+    box-shadow: 0px 2px 1px rgba(0,0,0,0.5);
+    transition: .4s;
+}
+
+.Setting .Switch input:checked + .Slider::before {
+    transform: translateX(22px);
+} */
+
+.Setting .Switch .Slider::before {
+    position: absolute;
+    content: "";
+    height: 12px;
+    width: 12px;
+    left: 4px;
+    bottom: 3px;
+    background-color: white;
+    border-radius: 50%;
+    transition: .4s;
+}
+
+.Setting .Switch input:checked + .Slider::before {
+    transform: translateX(19px);
+}
+
+.Option {
+    position: absolute;
+    width: 45%;
+}
+
+.Option.Left {
+    left: 0;
+}
+
+.Option.Right {
+    right: 0;
+}
+
+.Option.selected {
+    font-weight: 600;
+}
+
 .Footer {
     background-color: white;
+    padding: 8px;
+    font-size: 8pt;
+}
+
+.Footer a {
+    text-decoration: none;
+    color: #00A8D8;
+    font-weight: 600;
 }
 
 hr {
     height: 1px;
-    background-color: #e0e0e0;
-    border: solid 1px #e0e0e0;
+    background-color: #E0E0E0;
+    border: solid 1px #E0E0E0;
 }

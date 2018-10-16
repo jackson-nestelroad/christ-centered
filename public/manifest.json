@@ -10,6 +10,7 @@
   },
   "permissions": [
     "storage",
+    "tabs",
     "geolocation",
     "https://www.bible.com/",
     "https://fonts.googleapis.com/",
