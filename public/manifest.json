@@ -1,7 +1,6 @@
 {
   "name": "Christ-Centered",
   "version": "1.0",
-  "default_locale": "en",
   "description": "Replace your new tab page with the Bible Verse of the Day.",
   "icons": { 
     "128": "icon128.png" 
