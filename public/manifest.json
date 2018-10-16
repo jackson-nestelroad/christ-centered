@@ -1,12 +1,20 @@
 {
   "name": "Christ-Centered",
   "version": "1.0",
+  "default_locale": "en",
   "description": "Replace your new tab page with the Bible Verse of the Day.",
   "icons": { 
     "128": "icon128.png" 
   },
+  "background": {
+    "persistent": false,
+    "scripts": ["scripts/getLocation.js", "scripts/onInstall.js"]
+  },
   "browser_action": {
     "default_popup": "settings/settings.html"
+  },
+  "chrome_url_overrides": {
+    "newtab": "index.html"
   },
   "permissions": [
     "storage",
@@ -16,12 +24,5 @@
     "https://fonts.googleapis.com/",
     "https://api.openweathermap.org/"
   ],
-  "background": {
-    "persistent": false,
-    "scripts": ["getLocation.js"]
-  },
-  "chrome_url_overrides": {
-    "newtab": "index.html"
-  },
   "manifest_version": 2
 }

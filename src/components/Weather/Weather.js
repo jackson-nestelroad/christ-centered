@@ -31,7 +31,7 @@ export class Weather extends Component {
             return;
         }
         // Get our our weather data from Chrome storage API
-        chrome.storage.sync.get(['lastCheckedWeather', 'temperature', 'location', 'icon'], data => {
+        chrome.storage.sync.get(['lastCheckedWeather', 'temperature', 'location', 'icon', 'settingTemperature'], data => {
             const date = new Date();
             const now = date.getTime();
 
@@ -40,10 +40,16 @@ export class Weather extends Component {
             // if(now - data.lastCheckedWeather < 60 * 60 * 1000){\
             if(now - data.lastCheckedWeather < 15 * 60 * 1000){
                 console.log('used storage', data);
+
+                // Get the desired unit from settings, default value just in case
+                let unit = data.settingTemperature ? data.settingTemperature : 'F';
+                let temperature = Math.round(data.temperature[unit]);
+
                 this.setState({
-                    temperature: data.temperature,
+                    temperature: temperature,
                     location: data.location,
                     icon: data.icon,
+                    unit: unit,
                     loaded: true
                 });
             }
@@ -83,9 +89,12 @@ export class Weather extends Component {
                             let temperature = {
                                 C: Weather.main.temp - 273.15
                             }
-                            temperature.F = (temperature.C * 9/5) + 32;
+                            temperature.F = (temperature.C * 9/5) + 32
+                            let unit = data.settingTemperature ? data.settingTemperature : 'F';
+                            let temperatureDisplay = Math.round(temperature[unit]);
                             let location = Weather.name;
                             let description = Weather.weather[0].id;
+                            
 
                             // Get the icon-equivalent of the description given
                             let icon = getIcon.getIcon(description);
@@ -109,11 +118,13 @@ export class Weather extends Component {
                                 lastCheckedWeather: now
                             });
 
+                            
                             // Update our state so the data can be rendered
                             this.setState({
-                                temperature: temperature,
+                                temperature: temperatureDisplay,
                                 location: location,
                                 icon: icon,
+                                unit: unit,
                                 loaded: true
                             });
                         });
@@ -130,7 +141,6 @@ export class Weather extends Component {
             }
         })
     }
-        
 
     // Function to run immediately before component mounts
     componentWillMount = () => {
@@ -151,15 +161,11 @@ export class Weather extends Component {
         }
         // If the weather has loaded
         else{
-            // Decide which temperature to display here - celsius vs fahrenheit
-            let unit = 'F';
-            let temperature = Math.round(this.state.temperature[unit]);
-
             // Return our HTML elements
             return (
                 <div className="Weather loaded">
                     <span className={"Icon " + this.state.icon}></span>
-                    <div className="Temperature">{temperature}°<sup class="unit">{unit}</sup></div>
+                    <div className="Temperature">{this.state.temperature}°<sup class="unit">{this.state.unit}</sup></div>
                     <div className="Location">{this.state.location}</div>
                 </div>
             )

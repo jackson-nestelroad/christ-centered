@@ -52,6 +52,9 @@ body {
     background-color: #FFA987;
     border-radius: 25px;
     transition: 0.5s;
+    box-shadow: inset 0 5px 0 rgba(0,0,0,0.5);
+    border-style: solid;
+    border-color: rgba(0,0,0,0.5);
 }
 
 /* .Setting .Switch .Slider::before {
@@ -71,6 +74,20 @@ body {
     transform: translateX(22px);
 } */
 
+
+
+/* .Setting .Switch .Slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #FFA987;
+    border-radius: 25px;
+    transition: 0.5s;
+}
+
 .Setting .Switch .Slider::before {
     position: absolute;
     content: "";
@@ -81,6 +98,23 @@ body {
     background-color: white;
     border-radius: 50%;
     transition: .4s;
+}
+
+.Setting .Switch input:checked + .Slider::before {
+    transform: translateX(20px);
+} */
+
+.Setting .Switch .Slider::before {
+    position: absolute;
+    content: "";
+    height: 12px;
+    width: 12px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    border-radius: 50%;
+    transition: .4s;
+    box-shadow: 0 2px 0 rgba(0,0,0,0.5);
 }
 
 .Setting .Switch input:checked + .Slider::before {

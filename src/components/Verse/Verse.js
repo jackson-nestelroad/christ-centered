@@ -68,7 +68,7 @@ export class Verse extends Component {
                         reference = reference.substring(0, reference.indexOf('(') - 1);
                     
                         // Store all of these items in Chrome storage (it is faster to retrieve them this way)
-                        chrome.storage.sync.set({ verse: verse, reference: reference, url: url, lastCheckedVerse: startOfDay});
+                        chrome.storage.sync.set({ verse: verse, reference: reference, url: url, lastCheckedVerse: startOfDay });
 
                         // Set our state
                         this.setState({ verse: verse, reference: reference, url: url, loaded: true });
@@ -131,10 +131,6 @@ export class Verse extends Component {
     // Function to run before component renders
     componentWillMount = () => {
         this.getVerse();
-    }
-
-    textLoaded = () => {
-        this.setState({ transition: true });
     }
 
     // Render the Verse component
