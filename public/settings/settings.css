@@ -84,7 +84,7 @@ body {
 }
 
 .Setting .Switch input:checked + .Slider::before {
-    transform: translateX(19px);
+    transform: translateX(20px);
 }
 
 .Option {
