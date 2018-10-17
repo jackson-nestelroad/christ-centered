@@ -8,3 +8,6 @@
 *How can we put God at the center of everything we do?*
 
 **Christ-Centered** is a Google Chrome Extension to override your new tab page with YouVersion's Bible Verse of the Day.
+
+## About
+**Christ-Centered** is built with React JS and Chrome API. 
