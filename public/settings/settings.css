@@ -10,6 +10,10 @@ body {
     user-select: none;
 }
 
+body *:focus{
+    outline: 0;
+}
+
 .Settings {
     width: 100%;
     height: 100%;
@@ -26,8 +30,12 @@ body {
     font-weight: 600;
 }
 
-.Setting {
+.Setting:first-child {
     margin: 16px 0 8px 0;
+}
+
+.Setting {
+    margin: 8px 0 8px 0;
 }
 
 .Setting .Switch {
@@ -136,6 +144,21 @@ body {
 
 .Option.selected {
     font-weight: 600;
+}
+
+.Setting .Text input {
+    width: 75%;
+    text-align: center;
+    margin: 8px 0 0 0;
+    border: solid 1px #DAD8D6;
+    border-radius: 4px;
+    font-family: 'Open Sans';
+    font-weight: 300;
+}
+
+.Setting .Text .small {
+    font-size: 8pt;
+    margin: 0;
 }
 
 .Footer {

@@ -26,7 +26,14 @@ export class Verse extends Component {
     // Function to get the vere of the day from storage or bible.com
     getVerse = () => {
         // Get all of our verse data from Chrome storage API
-        chrome.storage.sync.get(['lastCheckedVerse', 'verse', 'reference', 'url'], data => {
+        chrome.storage.sync.get(['lastCheckedVerse', 'verse', 'reference', 'url', 'custom'], data => {
+
+            // If we have a custom verse saved
+            if(data.custom){
+                this.setState({ verse: data.verse, reference: data.reference, url: data.url, loaded: true });
+                return;
+            }
+
             const date = new Date();
             const startOfDay = new Date(`${date.getMonth()+1}/${date.getDate()}/${date.getFullYear()}`).getTime();
 
@@ -90,9 +97,9 @@ export class Verse extends Component {
     getFontSize = () => {
         // Linear function to get the font size for our verse so it doesn't flow off the screen
         const length = this.state.verse.length;
-        let size = 56;
+        let size = 50;
         let shadow = 4;
-        for(let k = 90; k <= 195; k += 35)
+        for(let k = 85; k <= 195; k += 35)
         {
             if(length > k)
             {
@@ -101,6 +108,33 @@ export class Verse extends Component {
             }
         }
         let styleValue = size.toString() + 'pt';
+
+        // Resizing Test 1
+
+        // const container = document.getElementsByClassName('Container')[0];
+        // const verse = container.children[0];
+
+        // for(var k = 0; k < 90; k++){
+        //     if(verse.offsetHeight > container.offsetHeight){
+        //             verse.style['font-size'] = (parseInt(verse.style['font-size']) - 1) + 'pt';
+        //     }
+        //     else{
+        //         break;
+        //     }	
+        // }
+
+        // Resizing Test 2
+
+        // const verse = document.getElementsByClassName('Verse')[0];
+        // window.addEventListener('resize', function() {
+        //     for(var k = 0; k < 50; k++){
+        //         if(document.getElementsByClassName('Reference')[0].offsetTop > document.documentElement.clientHeight){
+        //             verse.style['font-size'] = (parseInt(verse.style['font-size']) - 1) + 'pt';
+        //         }
+        //         else
+        //             verse.style['font-size'] = (parseInt(verse.style['font-size']) + 1) + 'pt';
+        //     }
+        // })
 
         if(!this.state.transition){
             setTimeout(() => {
@@ -149,7 +183,9 @@ export class Verse extends Component {
             document.title = this.state.reference;
             return (
                 <div className="Bible">
-                    <div className={"Verse " + (this.state.transition ? "transition" : "no-transition")} style={this.getFontSize()}>{this.state.verse}</div>
+                    <div className={"Verse " + (this.state.transition ? "transition" : "no-transition")} style={this.getFontSize()}>
+                        {this.state.verse}
+                    </div>
                     <div className="Reference">
                         <a href={this.state.url}>
                             {this.state.reference}

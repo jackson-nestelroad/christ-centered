@@ -37,7 +37,7 @@ export class Background extends Component {
         // Run when the image fully loads
         image.onload = () => {
             const background = {
-                backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.1) 0%,rgba(0, 0, 0, 0.75) 50%,rgba(0,0,0,0.1) 100%), 
+                backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.7) 40%, rgba(0,0,0,0.75) 50%, rgba(0,0,0,0.7) 60%, rgba(0,0,0,0.1) 100%), 
                                     url(${image.src})`
             }
             this.setState({ loaded: true, style: background });

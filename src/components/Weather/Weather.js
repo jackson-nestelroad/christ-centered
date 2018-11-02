@@ -80,7 +80,7 @@ export class Weather extends Component {
                             const Weather = JSON.parse(rawData);
                             
                             // If API request failed
-                            if(Weather.cod == 400){
+                            if(Weather.cod == 400 || Weather.cod == 500){
                                 this.setState({ error: true });
                                 return;
                             }

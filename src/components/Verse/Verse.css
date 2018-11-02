@@ -44,6 +44,10 @@
     }
 }
 
+.Bible .Container {
+    height: 40vh;
+}
+
 .Verse {
     word-wrap: break-word;
 }
