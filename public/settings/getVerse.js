@@ -48,10 +48,12 @@ getVerse = (input) => {
 
             // Return result
             let verse = results.children[0].innerText.trim().split('\n\n\n');
-
+        
             verse[0] = verse[0].substring(0, verse[0].indexOf('(') - 1);
 
-            verse.push(results.children[0].children[0].children[0].href);
+            // Parse URL
+            verse.push('https://www.bible.com' + results.children[0].children[0].children[0].getAttribute('href'));
+
             resolve(verse);
         }
         // No input, revert back to Verse of the Day
