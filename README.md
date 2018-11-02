@@ -11,3 +11,10 @@
 
 ## About
 **Christ-Centered** is built with React JS and Chrome API. 
+
+## Features
+* Display YouVersion's Bible Verse of the Day in your new tab page.
+* Display current weather information for your area.
+* Choose **12-hour** or **24-hour** time.
+* Choose temperature in **Fahrenheit** or **Celsius**
+* Choose to display a custom Bible verse through name or keyword.
