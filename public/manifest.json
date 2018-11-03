@@ -1,7 +1,7 @@
 {
   "name": "Christ-Centered",
   "version": "1.0.0",
-  "description": "Replace your new tab page with the Bible Verse of the Day.",
+  "description": "Replace your new tab page with the YouVersion Bible Verse of the Day.",
   "icons": { 
     "128": "icon128.png" 
   },
