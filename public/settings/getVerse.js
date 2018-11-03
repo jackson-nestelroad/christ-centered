@@ -75,11 +75,11 @@ updateBorder = (input, good) => {
 }
 
 // Update settings to reflect what is saved
-window.onload = () => {
+window.addEventListener('load', () => {
     chrome.storage.sync.get(['custom'], data => {
         if(data.custom){
             lastValue = data.custom;
             verseInput.value = data.custom;
         }
     })
-}
+})

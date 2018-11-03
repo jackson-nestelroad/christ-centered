@@ -7,6 +7,9 @@ const timeSetting = document.getElementById('Time-Setting');
 const tempInput = document.getElementById('Temp-Input');
 const tempSetting = document.getElementById('Temp-Setting');
 
+const textInput = document.getElementById('Text-Input');
+const textSetting = document.getElementById('Text-Setting');
+
 // Function to update a setting in the page
 // updateSetting(<input>, children[][, { settingName: value }])
 updateSetting = (input, options, setting) => {
@@ -39,6 +42,12 @@ tempInput.addEventListener('change', () => {
     updateSetting(tempInput, tempSetting.children, { settingTemperature: temp });
 })
 
+// Dynamic styling for text switch
+textInput.addEventListener('change', () => {
+    let text = textInput.checked ? 'big' : 'small';
+    updateSetting(textInput, textSetting.children, { settingText: text });
+})
+
 // Open <a href> links in a new tab
 window.addEventListener('click', element => {
     if(element.target.href){
@@ -47,8 +56,8 @@ window.addEventListener('click', element => {
 })
 
 // Update settings to reflect what is saved
-window.onload = () => {
-    chrome.storage.sync.get(['settingTime', 'settingTemperature'], data => {
+window.addEventListener('load', () => {
+    chrome.storage.sync.get(['settingTime', 'settingTemperature', 'settingText'], data => {
         if(data.settingTime == 24){
             timeInput.checked = true;
             updateSetting(timeInput, timeSetting.children);
@@ -57,5 +66,9 @@ window.onload = () => {
             tempInput.checked = true;
             updateSetting(tempInput, tempSetting.children);
         }
+        if(data.settingText == 'big'){
+            textInput.checked = true;
+            updateSetting(textInput, textSetting.children);
+        }
     })
-}
+})
