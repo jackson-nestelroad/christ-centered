@@ -19,18 +19,25 @@ export class Verse extends Component {
             transition: false,
             verse: '',
             reference: '',
-            url: ''
+            url: '',
+            settingText: false
         }
     }
 
     // Function to get the vere of the day from storage or bible.com
     getVerse = () => {
         // Get all of our verse data from Chrome storage API
-        chrome.storage.sync.get(['lastCheckedVerse', 'verse', 'reference', 'url', 'custom'], data => {
+        chrome.storage.sync.get(['lastCheckedVerse', 'verse', 'reference', 'url', 'custom', 'settingText'], data => {
 
             // If we have a custom verse saved
             if(data.custom){
-                this.setState({ verse: data.verse, reference: data.reference, url: data.url, loaded: true });
+                this.setState({ 
+                    verse: data.verse, 
+                    reference: data.reference, 
+                    url: data.url, 
+                    loaded: true,
+                    settingText: data.settingText 
+                });
                 return;
             }
 
@@ -39,7 +46,13 @@ export class Verse extends Component {
 
             // If it is the same day, we don't need to retrieve the Verse of the Day again
             if(data.lastCheckedVerse == startOfDay){
-                this.setState({ verse: data.verse, reference: data.reference, url: data.url, loaded: true });
+                this.setState({ 
+                    verse: data.verse, 
+                    reference: data.reference, 
+                    url: data.url, 
+                    loaded: true, 
+                    settingText: data.settingText 
+                });
             }
             // If it is a different day, we need to update the Verse of the Day
             else{
@@ -75,10 +88,21 @@ export class Verse extends Component {
                         reference = reference.substring(0, reference.indexOf('(') - 1);
                     
                         // Store all of these items in Chrome storage (it is faster to retrieve them this way)
-                        chrome.storage.sync.set({ verse: verse, reference: reference, url: url, lastCheckedVerse: startOfDay });
+                        chrome.storage.sync.set({ 
+                            verse: verse, 
+                            reference: reference, 
+                            url: url, 
+                            lastCheckedVerse: startOfDay 
+                        });
 
                         // Set our state
-                        this.setState({ verse: verse, reference: reference, url: url, loaded: true });
+                        this.setState({ 
+                            verse: verse, 
+                            reference: reference, 
+                            url: url, 
+                            loaded: true,
+                            settingText: data.settingText
+                        });
                     });
                 })
                 
@@ -95,71 +119,49 @@ export class Verse extends Component {
 
     // Function to get the font size for our Verse of the Day depending on its size
     getFontSize = () => {
-        // Linear function to get the font size for our verse so it doesn't flow off the screen
-        const length = this.state.verse.length;
-        let size = 50;
-        let shadow = 4;
-        for(let k = 85; k <= 195; k += 35)
-        {
-            if(length > k)
-            {
-                size -= 8;
-                shadow -= 0.5;
+        // One size fits all
+        if(this.state.settingText == 'small'){
+            // Add transition after a delay so the text doesn't grow on load
+            if(!this.state.transition){
+                setTimeout(() => {
+                    this.setState({ transition: true });
+                }, 500);
             }
+
+            return { 
+                fontSize: '20pt',
+                textShadow: `0px 2.5px 1px rgba(0,0,0,0.5)`
+            };
         }
-        let styleValue = size.toString() + 'pt';
+        // Scale font depending on length of verse
+        else{
+            const length = this.state.verse.length;
+            let size = 48;
+            let shadow = 4;
+            for(let k = 85; k <= 190; k += 35)
+            {
+                if(length > k)
+                {
+                    size -= 8;
+                    shadow -= 0.5;
+                }
+            }
+            let styleValue = size.toString() + 'pt';
 
-        // Resizing Test 1
+            // Add transition after a delay so the text doesn't grow on load
+            if(!this.state.transition){
+                setTimeout(() => {
+                    this.setState({ transition: true });
+                }, 500);
+            }
 
-        // const container = document.getElementsByClassName('Container')[0];
-        // const verse = container.children[0];
-
-        // for(var k = 0; k < 90; k++){
-        //     if(verse.offsetHeight > container.offsetHeight){
-        //             verse.style['font-size'] = (parseInt(verse.style['font-size']) - 1) + 'pt';
-        //     }
-        //     else{
-        //         break;
-        //     }	
-        // }
-
-        // Resizing Test 2
-
-        // const verse = document.getElementsByClassName('Verse')[0];
-        // window.addEventListener('resize', function() {
-        //     for(var k = 0; k < 50; k++){
-        //         if(document.getElementsByClassName('Reference')[0].offsetTop > document.documentElement.clientHeight){
-        //             verse.style['font-size'] = (parseInt(verse.style['font-size']) - 1) + 'pt';
-        //         }
-        //         else
-        //             verse.style['font-size'] = (parseInt(verse.style['font-size']) + 1) + 'pt';
-        //     }
-        // })
-
-        if(!this.state.transition){
-            setTimeout(() => {
-                this.setState({ transition: true });
-              }, 500);
+            // Return the style object for rendering
+            return { 
+                fontSize: styleValue,
+                lineHeight: styleValue,
+                textShadow: `0px ${Math.round(shadow)}px 1px rgba(0,0,0,0.5)`
+            };
         }
-
-        // Return the style object for rendering
-        return { 
-            fontSize: styleValue, 
-            lineHeight: styleValue, 
-            textShadow: `0px ${Math.round(shadow)}px 1px rgba(0,0,0,0.5)`
-        };
-
-        // Essentially the same algorithm, kept for reference
-        // if(length > 195)
-        //     size = 24;
-        // else if(length > 160)
-        //     size = 32;
-        // else if(length > 125)
-        //     size = 40;
-        // else if(length > 90)
-        //     size = 48;
-        // else
-        //     size = 56;
     }
 
     // Function to run before component renders
@@ -182,14 +184,12 @@ export class Verse extends Component {
         else{
             document.title = this.state.reference;
             return (
-                <div className="Bible">
+                <div className={"Bible" + (this.state.settingText == 'big' ? " big" : "")}>
                     <div className={"Verse " + (this.state.transition ? "transition" : "no-transition")} style={this.getFontSize()}>
                         {this.state.verse}
                     </div>
                     <div className="Reference">
-                        <a href={this.state.url}>
-                            {this.state.reference}
-                        </a>
+                        <a href={this.state.url}>{this.state.reference}</a>
                     </div>
                 </div>
             )

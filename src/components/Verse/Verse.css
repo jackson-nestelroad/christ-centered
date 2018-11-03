@@ -1,47 +1,45 @@
 /* This file styles the Verse component. */
 
 @media only screen and (min-width: 800px) {
-    .Bible {
-        color: #FFFFFF;
-        margin: 48px auto 0 auto;
-        user-select: none;
-        transition: opacity 0.25s;
-        width: 75%;
-    }
-    
     .Reference {
-        font-size: 18pt;
-        text-transform: uppercase;
-        font-weight: 600;
-        opacity: 0.8;
-        text-shadow: 0px 2px 1px rgba(0,0,0,0.5);
+        font-size: 12pt;
+        /* text-shadow: 0px 2px 1px rgba(0,0,0,0.5); */
         margin: 48px;
     }
+
+    /* .Verse { 
+        font-size: 20pt;
+        text-shadow: rgba(0, 0, 0, 0.5) 0px 2.5px 1px;
+    } */
 }
 
 @media only screen and (max-width: 800px) {
-    .Bible {
-        color: #FFFFFF;
-        margin: 48px auto 0 auto;
-        user-select: none;
-        transition: opacity 0.25s;
-        width: 75%;
-    }
-    
     .Reference {
-        font-size: 12pt;
-        text-transform: uppercase;
-        font-weight: 600;
-        opacity: 0.8;
-        text-shadow: 0px 1px 1px rgba(0,0,0,0.5);
+        font-size: 8pt;
+        /* text-shadow: 0px 1px 1px rgba(0,0,0,0.5); */
         margin: 32px;
     }
 
     .Verse { 
         font-size: 14pt !important;
-        line-height: 14pt !important;
         text-shadow: rgba(0, 0, 0, 0.5) 0px 1.5px 1px !important;
     }
+
+    .Bible.big *{
+        line-height: 14pt !important;
+    }
+}
+
+.Bible {
+    color: #FFFFFF;
+    margin: 64px auto 0 auto;
+    user-select: none;
+    transition: opacity 0.25s;
+    width: 66%;
+}
+
+.Bible.big{
+    margin: 48px auto 0 auto;
 }
 
 .Bible .Container {
@@ -50,6 +48,8 @@
 
 .Verse {
     word-wrap: break-word;
+    font-weight: 400;
+    animation: fadeinVerse 0.5s;
 }
 
 .Verse.transition {
@@ -61,14 +61,32 @@
 }
 
 .Reference { 
+    /* text-transform: uppercase; */
     transition: font-size 1s, text-shadow 1s, margin 1s;
 }
 
 .Reference a {
     text-decoration: none;
-    color: #FFFFFF;
+    font-weight: 700;
+    mix-blend-mode: screen;
+    color: black;
+    background: white;
+    opacity: 0.75;
+    padding: 4px 20px;
+    border-radius: 40px;
+    animation: fadeinRef 0.5s;
 }
 
 .unloaded {
     opacity: 0.5;
+}
+
+@keyframes fadeinRef {
+    from { opacity: 0; }
+    to { opacity: 0.75; }
+}
+
+@keyframes fadeinVerse {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }

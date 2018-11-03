@@ -7,6 +7,7 @@
     right: 16px;
     user-select: none;
     transition: opacity 0.25s;
+    animation: fadeinWeather 0.5s;
 }
 
 .Weather .Location {
@@ -28,7 +29,6 @@
 .Weather .Icon {
     font-size: 48pt;
     text-shadow: 0px 2px 1px rgba(0,0,0,0.5);
-    animation: fadein 0.25s;
 }
 
 .unloaded {
@@ -39,7 +39,7 @@
     opacity: 0.8;
 }
 
-@keyframes fadein {
+@keyframes fadeinWeather {
     from { opacity: 0; }
-    to { opacity: 1; }
+    to { opacity: 0.8; }
 }

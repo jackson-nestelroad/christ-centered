@@ -59,6 +59,36 @@ export class Weather extends Component {
                 chrome.runtime.sendMessage({ command: 'getLocation' }, response => {
                     let coordinates = response.coordinates;
 
+                    // NYC
+                    // let coordinates = {
+                    //     latitude:  40.7166638, 
+                    //     longitude: -74.0
+                    // }
+
+                    // Dallas
+                    // let coordinates = {
+                    //     latitude:  32.7767, 
+                    //     longitude: -96.7970
+                    // }
+
+                    // London
+                    // let coordinates = {
+                    //     latitude: 51.508530, 
+                    //     longitude: -0.076132
+                    // }
+
+                    // Dublin
+                    // let coordinates = {
+                    //     latitude: 53.350140,
+                    //     longitude: -6.266155,
+                    // }
+
+                    // Oklahoma City
+                    // let coordinates = {
+                    //     latitude:  35.4676, 
+                    //     longitude: -97.5164
+                    // }
+
                     // Options for our GET request
                     const options = {
                         hostname: 'api.openweathermap.org',
