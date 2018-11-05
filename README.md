@@ -1,5 +1,6 @@
-# Christ-Centered
+<p align="center">
 <img src="https://github.com/jackson-nestelroad/christ-centered/blob/master/store_images/Marquee.png" alt="alt text" height="200px">
+</p>
 
 > But **seek first** the kingdom of God and his righteousness, and all these things will be added to you. (Matthew 6:33 ESV)
 
