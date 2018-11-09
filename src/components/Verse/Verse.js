@@ -55,7 +55,7 @@ export class Verse extends Component {
                 });
             }
             // If it is a different day, we need to update the Verse of the Day
-            else{
+            else if(data.lastCheckedVerse != startOfDay || !data.verse || !data.reference || !data.url){
                 // Options for our GET request
                 const options = {
                     hostname: 'www.bible.com',

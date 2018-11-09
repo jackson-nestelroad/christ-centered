@@ -8,14 +8,16 @@ let lastValue;
 document.onkeydown = event => {
     var keyCode = event ? (event.which ? event.which : event.keyCode) : event.keyCode;
     // Enter key pressed
-    if(keyCode == 13 && enter && verseInput.value != lastValue)
-    {
+    if(keyCode == 13 && enter && verseInput.value != lastValue){
         enter = false;
+        updateBorder(verseInput, 'loading');
+        updateText(verseInput, 'loading')
         lastValue = verseInput.value;
         getVerse(lastValue)
             // Verse returns
             .then(verse => {
-                updateBorder(verseInput, true);
+                updateBorder(verseInput, 'good');
+                updateText(verseInput, 'good');
                 // No verse, force a read of the Verse of the Day
                 if(!verse)
                     chrome.storage.sync.set({ custom: false, lastCheckedVerse: 0 });
@@ -26,14 +28,15 @@ document.onkeydown = event => {
             })
             // No results found
             .catch(() => {
-                updateBorder(verseInput, false);
+                updateBorder(verseInput, 'bad');
+                updateText(verseInput, 'bad');
                 enter = true;
             })
     }
 }
 
 // Function to send HTTP request to YouVersion search.
-getVerse = (input) => {
+getVerse = input => {
     return new Promise((resolve, reject) => {
         let http = new XMLHttpRequest();
         http.onload = () => {
@@ -43,12 +46,15 @@ getVerse = (input) => {
             let results = YouVersionHTML.getElementsByClassName('search-result')[0];
 
             // No results
-            if(!results)
+            // Early return to stop execution of the rest of the function
+            if(!results){
                 reject();
+                return;
+            }
 
             // Return result
             let verse = results.children[0].innerText.trim().split('\n\n\n');
-        
+
             verse[0] = verse[0].substring(0, verse[0].indexOf('(') - 1);
 
             // Parse URL
@@ -67,11 +73,24 @@ getVerse = (input) => {
 }
 
 // Function to update border of input dependoing on result
-updateBorder = (input, good) => {
-    if(good)
+updateBorder = (input, result) => {
+    if(result == 'good')
         input.style['border'] = 'solid 1px #12BC12';
+    else if(result == 'loading')
+        input.style['border'] = 'solid 1px #00A8D8';
     else
         input.style['border'] = 'solid 1px #FF6868';
+}
+
+// Function to update text below verse input depending on result
+updateText = (input, result) => {
+    let text = input.parentElement.lastElementChild;
+    if(result == 'good')
+        text.innerHTML = 'Saved!';
+    else if(result == 'loading')
+        text.innerHTML = 'Searching...';
+    else
+        text.innerHTML = 'No verse found!'
 }
 
 // Update settings to reflect what is saved
