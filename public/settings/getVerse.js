@@ -20,10 +20,10 @@ document.onkeydown = event => {
                 updateText(verseInput, 'good');
                 // No verse, force a read of the Verse of the Day
                 if(!verse)
-                    chrome.storage.sync.set({ custom: false, lastCheckedVerse: 0 });
+                    chrome.storage.sync.set({ settingCustom: false, lastCheckedVerse: 0 });
                 // Save the custom verse
                 else
-                    chrome.storage.sync.set({ custom: lastValue, reference: verse[0], verse: verse[1], url: verse[2], lastCheckedVerse: 0 });
+                    chrome.storage.sync.set({ settingCustom: lastValue, reference: verse[0], verse: verse[1], url: verse[2], lastCheckedVerse: 0 });
                 enter = true;
             })
             // No results found
@@ -95,10 +95,10 @@ updateText = (input, result) => {
 
 // Update settings to reflect what is saved
 window.addEventListener('load', () => {
-    chrome.storage.sync.get(['custom'], data => {
-        if(data.custom){
-            lastValue = data.custom;
-            verseInput.value = data.custom;
+    chrome.storage.sync.get(['settingCustom'], data => {
+        if(data.settingCustom){
+            lastValue = data.settingCustom;
+            verseInput.value = data.settingCustom;
         }
     })
 })

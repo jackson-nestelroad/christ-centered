@@ -27,10 +27,10 @@ export class Verse extends Component {
     // Function to get the vere of the day from storage or bible.com
     getVerse = () => {
         // Get all of our verse data from Chrome storage API
-        chrome.storage.sync.get(['lastCheckedVerse', 'verse', 'reference', 'url', 'custom', 'settingText'], data => {
+        chrome.storage.sync.get(['lastCheckedVerse', 'verse', 'reference', 'url', 'settingCustom', 'settingText'], data => {
 
             // If we have a custom verse saved
-            if(data.custom){
+            if(data.settingCustom){
                 this.setState({ 
                     verse: data.verse, 
                     reference: data.reference, 
@@ -136,7 +136,7 @@ export class Verse extends Component {
         // Scale font depending on length of verse
         else{
             const length = this.state.verse.length;
-            let size = 48;
+            let size = 52;
             let shadow = 4;
             for(let k = 85; k <= 190; k += 35)
             {
