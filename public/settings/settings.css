@@ -10,7 +10,7 @@ body {
     user-select: none;
 }
 
-body *:focus{
+body *:focus {
     outline: 0;
 }
 
