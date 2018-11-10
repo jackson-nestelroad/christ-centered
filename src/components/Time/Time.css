@@ -1,5 +1,6 @@
 /* This file styles the Time component. */
 
+/* Normal screen (1000px-) */
 @media only screen and (min-width: 1000px) {
     .Time {
         font-size: 112pt;
@@ -7,19 +8,38 @@
     }   
 }
 
+/* Reduced width (800px-999px) */
 @media only screen and (min-width: 800px) and (max-width: 999px) {
     .Time {
-        font-size: 100pt;
+        font-size: 96pt;
         text-shadow: 0px 4px 1px rgba(0,0,0,0.5);
     }   
 }
 
+/* Reduced width (0px-800px) */
 @media only screen and (max-width: 800px) {
     .Time {
-        font-size: 56pt;
-        text-shadow: 0px 2.5px 1px rgba(0,0,0,0.5);
+        font-size: 56pt !important;
+        text-shadow: 0px 2.5px 1px rgba(0,0,0,0.5) !important;
     }
 }
+
+/* Reduced height (500px-600px) */
+@media only screen and (min-height: 500px) and (max-height: 600px) {
+    .Time {
+        font-size: 96pt;
+        text-shadow: 0px 4px 1px rgba(0,0,0,0.5);
+    }   
+}
+
+/* Reduced height (0px-500px) */
+@media only screen and (max-height: 500px) { 
+    .Time {
+        font-size: 56pt !important;
+        text-shadow: 0px 2.5px 1px rgba(0,0,0,0.5) !important;
+    }
+}
+
 
 .Time {
     color: #FFFFFF;

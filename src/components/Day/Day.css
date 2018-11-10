@@ -1,5 +1,6 @@
 /* This file styles the Day component. */
 
+/* Normal screen (1000px-) */
 @media only screen and (min-width: 1000px) {
     .Day {
         font-size: 24pt;
@@ -8,6 +9,7 @@
     }
 }
 
+/* Reduced width (800px-999px) */
 @media only screen and (min-width: 800px) and (max-width: 999px) {
     .Day {
         font-size: 21pt;
@@ -16,11 +18,30 @@
     }
 }
 
+/* Reduced width (0px-800px) */
 @media only screen and (max-width: 800px) {
     .Day {
-        font-size: 12pt;
-        text-shadow: 0px 1px 1px rgba(0,0,0,0.5);
-        margin: -16px 0 0 0;
+        font-size: 12pt !important;
+        text-shadow: 0px 1px 1px rgba(0,0,0,0.5) !important;
+        margin: -16px 0 0 0 !important;
+    }
+}
+
+/* Reduced height (500px-600px) */
+@media only screen and (min-height: 500px) and (max-height: 600px) {
+    .Day {
+        font-size: 21pt;
+        text-shadow: 0px 2px 1px rgba(0,0,0,0.5);
+        margin: -28px 0 0 0;
+    } 
+}
+
+/* Reduced height (0px-500px) */
+@media only screen and (max-height: 500px) { 
+    .Day {
+        font-size: 12pt !important;
+        text-shadow: 0px 1px 1px rgba(0,0,0,0.5) !important;
+        margin: -16px 0 0 0 !important;
     }
 }
 
