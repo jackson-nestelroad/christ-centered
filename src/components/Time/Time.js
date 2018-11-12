@@ -51,8 +51,53 @@ export class Time extends Component {
         let seconds = date.getSeconds();
         seconds = seconds < 10 ? '0' + seconds : seconds;
 
-        // Update state
-        this.setState({ time: `${hours} ${minutes} ${seconds}`, setting: setting });
+        // Return time and time setting
+        return {
+            time: `${hours} ${minutes} ${seconds}`,
+            setting: setting
+        }
+    }
+
+    // Get the current date
+    getDate = () => {
+        // Current date
+        const date = new Date();
+
+        // Array of all months
+        const months = [
+            'January',
+            'February',
+            'March',
+            'April',
+            'May',
+            'June',
+            'July',
+            'August',
+            'September',
+            'October',
+            'November',
+            'December'
+        ];
+
+        // Array of all days
+        const days = [
+            'Sunday',
+            'Monday',
+            'Tuesday',
+            'Wednesday',
+            'Thursday',
+            'Friday',
+            'Saturday'
+        ];
+
+        // Define each part of the date
+        let month = months[date.getMonth()];
+        let day = date.getDate();
+        let dayOfWeek = days[date.getDay()];
+        let year = date.getFullYear();
+    
+        // Return string for the date
+        return `${dayOfWeek}, ${month} ${day}, ${year}`;
     }
 
     // Update the time through logic, not new Date() objects
@@ -96,10 +141,18 @@ export class Time extends Component {
 
     // Runs before component renders
     componentWillMount = async () => {
-        // Get initial time
-        await this.getTime();
-        
-        // Update the time every second
+        // Get time and date
+        let Time = await this.getTime();
+        let date = this.getDate();
+
+        // Set our state to display time and date
+        this.setState({ 
+            date: date,
+            time: Time.time, 
+            setting: Time.setting 
+        });
+
+        // Update time every second
         this.interval = setInterval(this.updateTime, 1000);
     }
 
@@ -112,7 +165,14 @@ export class Time extends Component {
     // Render the Time component
     render = () => {
         return (
-            <div className="Time">{this.state.time}{this.props.children}</div>
+            <div className="Now">
+                <div className="Time">
+                    {this.state.time}
+                </div>
+                <div className="Date">
+                    {this.state.date}
+                </div>
+            </div>
         )
     }
 }

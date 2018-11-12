@@ -5,7 +5,13 @@
     .Time {
         font-size: 112pt;
         text-shadow: 0px 5px 1px rgba(0,0,0,0.5);
-    }   
+    } 
+
+    .Date {
+        font-size: 24pt;
+        text-shadow: 0px 2px 1px rgba(0,0,0,0.5);
+        margin: -32px 0 0 0;
+    }
 }
 
 /* Reduced width (800px-999px) */
@@ -13,7 +19,13 @@
     .Time {
         font-size: 96pt;
         text-shadow: 0px 4px 1px rgba(0,0,0,0.5);
-    }   
+    }  
+    
+    .Date {
+        font-size: 21pt;
+        text-shadow: 0px 2px 1px rgba(0,0,0,0.5);
+        margin: -28px 0 0 0;
+    }
 }
 
 /* Reduced width (0px-800px) */
@@ -22,6 +34,12 @@
         font-size: 56pt !important;
         text-shadow: 0px 2.5px 1px rgba(0,0,0,0.5) !important;
     }
+
+    .Date {
+        font-size: 12pt !important;
+        text-shadow: 0px 1px 1px rgba(0,0,0,0.5) !important;
+        margin: -16px 0 0 0 !important;
+    }
 }
 
 /* Reduced height (500px-600px) */
@@ -29,7 +47,13 @@
     .Time {
         font-size: 96pt;
         text-shadow: 0px 4px 1px rgba(0,0,0,0.5);
-    }   
+    }  
+    
+    .Date {
+        font-size: 21pt;
+        text-shadow: 0px 2px 1px rgba(0,0,0,0.5);
+        margin: -28px 0 0 0;
+    } 
 }
 
 /* Reduced height (0px-500px) */
@@ -38,19 +62,39 @@
         font-size: 56pt !important;
         text-shadow: 0px 2.5px 1px rgba(0,0,0,0.5) !important;
     }
+
+    .Date {
+        font-size: 12pt !important;
+        text-shadow: 0px 1px 1px rgba(0,0,0,0.5) !important;
+        margin: -16px 0 0 0 !important;
+    }
 }
 
-
-.Time {
+.Now {
     color: #FFFFFF;
     white-space: nowrap;
-    margin: 48px 0 0 0;
     user-select: none;
+}
+
+.Now .Time {
+
+    margin: 48px 0 0 0;
     animation: fadeinTime 0.5s;
-    transition: font-size 1s, text-shadow 1s;
+    transition: 1s;
+}
+
+.Now .Date {
+    opacity: 0.8;
+    animation: fadeinDate 0.5s;
+    transition: 1s;
 }
 
 @keyframes fadeinTime {
     from { opacity: 0; }
     to { opacity: 1; }
+}
+
+@keyframes fadeinDate {
+    from { opacity: 0; }
+    to { opacity: 0.8; }
 }

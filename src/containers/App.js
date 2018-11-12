@@ -6,7 +6,6 @@ import data from '../assets/backgrounds/_data.json';                            
 
 import { Background } from '../components/Background/Background';                       // Background component
 import { Time } from '../components/Time/Time';                                         // Time component
-import { Day } from '../components/Day/Day';                                            // Day component
 import { Verse } from '../components/Verse/Verse';                                      // Verse component
 import { Source } from '../components/Source/Source';                                   // Source component
 import { Weather } from '../components/Weather/Weather';                                // Weather component
@@ -26,7 +25,6 @@ export default class App extends Component {
             <Background image={this.state.image.id}>
                 <Weather />
                 <Time />
-                <Day />
                 <Verse />
                 <Source photographer={this.state.image.photographer} source={this.state.image.source} />
             </Background>
