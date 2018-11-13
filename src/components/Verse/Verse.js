@@ -165,7 +165,7 @@ export class Verse extends Component {
     }
 
     // Function to run before component renders
-    componentWillMount = () => {
+    componentDidMount = () => {
         this.getVerse();
     }
 
