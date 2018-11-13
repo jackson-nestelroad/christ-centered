@@ -71,7 +71,7 @@
 }
 
 .Verse.transition {
-    transition: font-size 1s, text-shadow 1s, line-height 1s;
+    transition: 1s;
 }
 
 .Verse.no-transition {
@@ -80,7 +80,7 @@
 
 .Reference { 
     /* text-transform: uppercase; */
-    transition: font-size 1s, text-shadow 1s, margin 1s;
+    transition: 1s;
 }
 
 .Reference a {
@@ -93,6 +93,11 @@
     padding: 4px 20px;
     border-radius: 40px;
     animation: fadeinRef 0.5s;
+}
+
+.Reference a:empty {
+    opacity: 0;
+    animation: none;
 }
 
 .unloaded {
