@@ -1,5 +1,6 @@
 /* This file styles the Verse component. */
 
+/* Normal screen (800px-) */
 @media only screen and (min-width: 800px) {
     .Reference {
         font-size: 12pt;
@@ -11,8 +12,13 @@
         font-size: 20pt;
         text-shadow: rgba(0, 0, 0, 0.5) 0px 2.5px 1px;
     } */
+
+    .Bible {
+        margin: 64px auto 0;
+    }
 }
 
+/* Reduced width (0px-800px) */
 @media only screen and (max-width: 800px) {
     .Reference {
         font-size: 8pt;
@@ -25,11 +31,16 @@
         text-shadow: rgba(0, 0, 0, 0.5) 0px 1.5px 1px !important;
     }
 
+    .Bible {
+        margin: 48px auto 0;
+    }
+
     .Bible.big *{
         line-height: 14pt !important;
     }
 }
 
+/* Reduced height (0px-500px) */
 @media only screen and (max-height: 500px) { 
     .Reference {
         font-size: 8pt;
@@ -42,6 +53,10 @@
         text-shadow: rgba(0, 0, 0, 0.5) 0px 1.5px 1px !important;
     }
 
+    .Bible {
+        margin: 48px auto 0;
+    }
+
     .Bible.big *{
         line-height: 14pt !important;
     }
@@ -49,14 +64,17 @@
 
 .Bible {
     color: #FFFFFF;
-    margin: 64px auto 0 auto;
     user-select: none;
-    transition: opacity 0.25s;
     width: 66%;
+    animation: moveInBible 1s;
 }
 
-.Bible.big{
-    margin: 48px auto 0 auto;
+.Bible.transition {
+    transition: opacity 0.25s, margin 1s;
+}
+
+.Bible.big {
+    margin: 48px auto 0;
     width: 80%;
 }
 
@@ -102,6 +120,11 @@
 
 .unloaded {
     opacity: 0.5;
+}
+
+@keyframes moveInBible {
+    from { transform: translate(0px, -32px); }
+    to { transform: translate(0px, 0px); }
 }
 
 @keyframes fadeinRef {

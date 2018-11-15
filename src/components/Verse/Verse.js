@@ -184,7 +184,7 @@ export class Verse extends Component {
         else{
             document.title = this.state.reference;
             return (
-                <div className={"Bible" + (this.state.settingText == 'big' ? " big" : "")}>
+                <div className={"Bible" + (this.state.settingText == 'big' ? " big" : "") + (this.state.transition ? " transition" : " no-transition")}>
                     <div className={"Verse " + (this.state.transition ? "transition" : "no-transition")} style={this.getFontSize()}>
                         {this.state.verse}
                     </div>

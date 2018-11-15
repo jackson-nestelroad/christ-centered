@@ -74,6 +74,7 @@
     color: #FFFFFF;
     white-space: nowrap;
     user-select: none;
+    animation: moveInTime 1s;
 }
 
 .Now .Time {
@@ -87,6 +88,11 @@
     opacity: 0.8;
     animation: fadeinDate 0.5s;
     transition: 1s;
+}
+
+@keyframes moveInTime {
+    from { transform: translate(0px, -32px); }
+    to { transform: translate(0px, 0px); }
 }
 
 @keyframes fadeinTime {
