@@ -79,7 +79,7 @@
 
 .Now .Time {
 
-    margin: 48px 0 0 0;
+    margin: 24px 0 0 0;
     animation: fadeinTime 0.5s;
     transition: 1s;
 }
