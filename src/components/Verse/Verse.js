@@ -45,7 +45,7 @@ export class Verse extends Component {
             const startOfDay = new Date(`${date.getMonth()+1}/${date.getDate()}/${date.getFullYear()}`).getTime();
 
             // If it is the same day, we don't need to retrieve the Verse of the Day again
-            if(data.lastCheckedVerse == startOfDay){
+            if(data.lastCheckedVerse === startOfDay){
                 this.setState({ 
                     verse: data.verse, 
                     reference: data.reference, 
@@ -55,10 +55,10 @@ export class Verse extends Component {
                 });
             }
             // If it is a different day, we need to update the Verse of the Day
-            else if(data.lastCheckedVerse != startOfDay || !data.verse || !data.reference || !data.url){
+            else if(data.lastCheckedVerse !== startOfDay || !data.verse || !data.reference || !data.url){
                 // Options for our GET request
                 const options = {
-                    hostname: 'www.bible.com',
+                    hostname: 'bible.com',
                     path: '/',
                     method: 'GET'
                 }
@@ -80,7 +80,7 @@ export class Verse extends Component {
                         
                         // URL for the Verse of the Day
                         let url = YouVersionHTML.getElementsByClassName('votd-verse')[0].children[0].getAttribute('href');
-                        url = 'https://www.bible.com' + url;
+                        url = 'https://bible.com' + url;
 
                         // Get the Verse and Reference from the HTML
                         let verse = YouVersionHTML.getElementsByClassName('votd-verse')[0].children[0].innerHTML;
@@ -120,7 +120,7 @@ export class Verse extends Component {
     // Function to get the font size for our Verse of the Day depending on its size
     getFontSize = () => {
         // One size fits all
-        if(this.state.settingText == 'small'){
+        if(this.state.settingText === 'small'){
             // Add transition after a delay so the text doesn't grow on load
             if(!this.state.transition){
                 setTimeout(() => {
@@ -184,7 +184,7 @@ export class Verse extends Component {
         else{
             document.title = this.state.reference;
             return (
-                <div className={"Bible" + (this.state.settingText == 'big' ? " big" : "") + (this.state.transition ? " transition" : " no-transition")}>
+                <div className={"Bible" + (this.state.settingText === 'big' ? " big" : "") + (this.state.transition ? " transition" : " no-transition")}>
                     <div className={"Verse " + (this.state.transition ? "transition" : "no-transition")} style={this.getFontSize()}>
                         {this.state.verse}
                     </div>

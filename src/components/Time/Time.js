@@ -35,7 +35,7 @@ export class Time extends Component {
         let setting = await this.getSettingTime();
         
         // If we want to do 12 hour time, we have to edit our hours value a bit
-        if(setting == 12){
+        if(setting === 12){
             hours -= hours > 12 ? 12 : 0;
             hours = hours === 0 ? 12 : hours;
         }

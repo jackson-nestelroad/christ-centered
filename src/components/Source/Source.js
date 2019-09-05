@@ -7,11 +7,6 @@ import './Source.css';                                                          
 // Create Source component
 export class Source extends Component {
 
-    // Construct our properties and state
-    constructor(props){
-        super(props);
-    }
-
     // Render the Source component
     render = () => {
         return (
