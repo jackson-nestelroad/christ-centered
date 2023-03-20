@@ -57,6 +57,10 @@ export class Weather extends Component {
             else{
                 // Send a message to our background script to get the user's location
                 chrome.runtime.sendMessage({ command: 'getLocation' }, response => {
+                    if (!response) {
+                        return;
+                    }
+                    
                     let coordinates = response.coordinates;
 
                     // NYC
