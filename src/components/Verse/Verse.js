@@ -58,7 +58,7 @@ export class Verse extends Component {
             else if(data.lastCheckedVerse !== startOfDay || !data.verse || !data.reference || !data.url){
                 // Options for our GET request
                 const options = {
-                    hostname: 'bible.com',
+                    hostname: 'www.verseoftheday.com',
                     path: '/',
                     method: 'GET'
                 }
@@ -76,16 +76,16 @@ export class Verse extends Component {
 
                         // Our raw data can be parsed as HTML
                         const parser = new DOMParser();
-                        const YouVersionHTML = parser.parseFromString(rawData, 'text/html');
+                        const dom = parser.parseFromString(rawData, 'text/html');
                         
-                        // URL for the Verse of the Day
-                        let url = YouVersionHTML.getElementsByClassName('votd-verse')[0].children[0].getAttribute('href');
-                        url = 'https://bible.com' + url;
+                        // We can no longer scrape YouVersion's Verse of the Day statically, so we opt to use Bible Gateway
 
-                        // Get the Verse and Reference from the HTML
-                        let verse = YouVersionHTML.getElementsByClassName('votd-verse')[0].children[0].innerHTML;
-                        let reference = YouVersionHTML.getElementsByClassName('votd-ref')[0].children[0].innerHTML;
-                        reference = reference.substring(0, reference.indexOf('(') - 1);
+                        // Get the URL, Verse, and Reference from the HTML
+                        const referenceNode = dom.querySelector('#featured .scripture .reference a');
+                        let url = referenceNode.getAttribute('href');
+                        let verse = dom.querySelector('#featured .scripture .bilingual-left').childNodes[0].textContent;
+                        let reference = referenceNode.textContent;
+
                     
                         // Store all of these items in Chrome storage (it is faster to retrieve them this way)
                         chrome.storage.sync.set({ 

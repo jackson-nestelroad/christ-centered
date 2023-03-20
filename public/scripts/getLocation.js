@@ -8,6 +8,8 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
                 longitude: position.coords.longitude
             }
             sendResponse({ coordinates: coordinates });
+        }, error => {
+            console.error('Failed to get location', error);
         })
         // We need to return true here to tell the callback that this is asynchronous
         return true;
