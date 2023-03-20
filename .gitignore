@@ -1,0 +1,9 @@
+node_modules/
+build/
+
+build.zip
+build.pem
+build.crx
+
+src/assets/backgrounds/*.jpeg
+src/assets/config.json
