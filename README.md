@@ -1,3 +1,5 @@
+**New and improved at [jackson-nestelroad/christ-centered-2.0](https://github.com/jackson-nestelroad/christ-centered-2.0)!**
+
 <p align="center">
 <img src="https://github.com/jackson-nestelroad/christ-centered/blob/master/store_images/Marquee.png" alt="alt text" height="200px">
 </p>
