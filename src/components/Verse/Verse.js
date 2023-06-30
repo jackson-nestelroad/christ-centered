@@ -83,8 +83,9 @@ export class Verse extends Component {
                         // Get the URL, Verse, and Reference from the HTML
                         const referenceNode = dom.querySelector('#featured .scripture .reference a');
                         let url = referenceNode.getAttribute('href');
-                        let verse = dom.querySelector('#featured .scripture .bilingual-left').childNodes[0].textContent;
+                        let verse = dom.querySelector('#featured .scripture .bilingual-left').textContent;
                         let reference = referenceNode.textContent;
+                        verse = verse.substring(0, verse.length - reference.length - 1).trim();
 
                     
                         // Store all of these items in Chrome storage (it is faster to retrieve them this way)
